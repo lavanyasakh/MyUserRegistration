@@ -20,9 +20,9 @@ public class UserRegistration {
     public static void mobileValidity(String name) {
         System.out.println("Mobile Number: " + Pattern.matches("^[9][1][\s][6-9][0-9]{9}$", name));
     }
-    //should Have Min 8 Charecters And Should Have Atleast One UpperCase
+    //should Have Min 8 Charecters And Should Have Atleast One UpperCase And Should Have One Numeric Value
     public static void passwordValidity(String name) {
-        System.out.println("Password: " + Pattern.matches("^(?=.*[A-Z])[a-zA-Z0-9]{8,}$", name));
+        System.out.println("Password: " + Pattern.matches("^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}$", name));
     }
     public static void main(String[] args) {
         System.out.println("Welcome To User Registration Program");
