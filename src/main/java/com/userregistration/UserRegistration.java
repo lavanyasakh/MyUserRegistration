@@ -16,6 +16,9 @@ public class UserRegistration {
     public static void emailValidity(String name) {
         System.out.println("E-Mail Validity: " + Pattern.matches("^[a-zA-Z0-9]{3,}([.]{1}+[a-zA-Z0-9]{3,})*[@]{1}[a-zA-Z0-9]{2,}[.]{1}[a-zA-Z0-9]{2,}([.]{1}[a-zA-Z0-9]{2,})*$", name));
     }
+    public static void mobileValidity(String name) {
+        System.out.println("Mobile Number: " + Pattern.matches("^[9][1][\s][6-9][0-9]{9}$", name));
+    }
     public static void main(String[] args) {
         System.out.println("Welcome To User Registration Program");
         Scanner sc = new Scanner(System.in);
@@ -25,9 +28,12 @@ public class UserRegistration {
         String lastName = sc.nextLine();
         System.out.println("Enter Your Email Id");
         String email = sc.nextLine();
+        System.out.println("Enter Your Mobile Number");
+        String num = sc.nextLine();
         firstNameValidity(firstName);
         lastNameValidity(lastName);
         emailValidity(email);
+        mobileValidity(num);
     }
 }
 
