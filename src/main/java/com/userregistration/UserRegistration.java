@@ -1,5 +1,6 @@
 package com.userregistration;
 
+
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -14,7 +15,7 @@ public class UserRegistration {
         System.out.println("Last Name Validity: " + Pattern.matches("^[A-Z]{1}[a-zA-Z]{2,}$", name));
     }
     public static void emailValidity(String name) {
-        System.out.println("E-Mail Validity: " + Pattern.matches("^[a-zA-Z0-9]{3,}([.]{1}+[a-zA-Z0-9]{3,})*[@]{1}[a-zA-Z0-9]{2,}[.]{1}[a-zA-Z0-9]{2,}([.]{1}[a-zA-Z0-9]{2,})*$", name));
+        System.out.println("E-Mail: " + Pattern.matches("^[a-z]{3,}([\\.\\+\\-]?[0-9]{3,})?[@][a-z0-9]{1,}[.][a-z]{2,4}[,]?([.][a-z]{2,4}[.]?)?$", name));
     }
     //Country Code Followed by Space And Fallowed By 10 Digit Numbers
     public static void mobileValidity(String name) {
