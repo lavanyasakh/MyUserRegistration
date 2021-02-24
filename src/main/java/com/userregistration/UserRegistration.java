@@ -1,6 +1,5 @@
 package com.userregistration;
 
-
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
