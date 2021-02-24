@@ -1,6 +1,7 @@
 package org.userregistration;
 
 import com.userregistration.UserRegistration;
+import com.userregistration.UserRegistrationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
@@ -51,7 +52,7 @@ public class UserRegistrationParameterTest {
             });
         }
         @Test
-        public void checkEmailIsvalidOrNot() {
+        public void checkEmailIsvalidOrNot() throws UserRegistrationException {
             System.out.println("Email:" + this.expectedResult);
             Assertions.assertEquals(this.expectedResult, person.emailValidity(this.email));
         }
