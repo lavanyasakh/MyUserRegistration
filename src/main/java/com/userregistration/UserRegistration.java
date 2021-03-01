@@ -1,69 +1,38 @@
 package com.userregistration;
-
+import java.util.Scanner;
 import java.util.regex.Pattern;
+@FunctionalInterface
+interface UserEntryDetails {
+    boolean validityCheck(String pattern, String name);
+}
+
 
 public class UserRegistration {
-    //First Name should start With Capital And Has Min 3 charecters
-    public boolean firstNameValidity(String name) throws UserRegistrationException {
-        if (Pattern.matches("^[A-Z]{1}[a-zA-Z]{2,}$", name))
-            return true;
-        else
-            throw new UserRegistrationException("Invalid First Name");
-    }
-    //Last Name Should Start With Capital And Has Min 3 Charecters
-    public boolean lastNameValidity(String name) throws UserRegistrationException {
-        if(Pattern.matches("^[A-Z]{1}[a-zA-Z]{2,}$", name))
-            return true;
-        else
-            throw new UserRegistrationException("Invalid Last Name");
+    static String FIRST_NAME = "^[A-Z]{1}[a-zA-Z]{2,}$";
+    static String LAST_NAME = "^[A-Z]{1}[a-zA-Z]{2,}$";
+    static String EMAIL = "^[a-zA-Z0-9]{3,}([\\.\\+\\-]?[a-zA-Z0-9]{3,})?[@][A-Za-z0-9]{1,}[.][A-Za-z]{2,4}[,]?([.][A-Za-z]{2,4}[.]?)?$";
+    static String MOBILE_NUMBER = "^[9][1]\\s[6-9][0-9]{9}$";
+    static String PASSWORD = "^(?=.*[\\@\\#\\$\\%\\&\\_\\,\\.])(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$";
+    static Scanner sc = new Scanner(System.in);
 
-    }
-    public boolean emailValidity(String name) throws UserRegistrationException {
-        if(Pattern.matches("^[a-z]{3,}([\\.\\+\\-]?[0-9]{3,})?[@][a-z0-9]{1,}[.][a-z]{2,4}[,]?([.][a-z]{2,4}[.]?)?$", name))
-            return true;
-        else
-            throw new UserRegistrationException("Invalid email Id");
-    }
-    //Country Code Followed by Space And Fallowed By 10 Digit Numbers
-    public boolean mobileValidity(String name) throws UserRegistrationException {
-        if(Pattern.matches("^[9][1][\s][6-9][0-9]{9}$", name))
-            return true;
-        else
-            throw new UserRegistrationException("Invalid Mobile Number");
-    }
-    //should Have Min 8 Charecters And Should Have Atleast One UpperCase And Should Have One Numeric Value And One Special Charecter
-    public boolean passwordValidity(String name) throws UserRegistrationException {
-        if(Pattern.matches("^(?=.*[\\@\\#\\$\\%\\&\\_\\,\\.])(?=.*[A-Z])(?=.*[0-9]).{8,}$", name))
-            return true;
-        else
-            throw new UserRegistrationException("Invalid Password");
-    }
     public static void main(String[] args) {
-        System.out.println("Welcome To User Registration Program");
-        UserRegistration person = new UserRegistration();
-        try {
-            person.firstNameValidity("Lavanya");
-        }catch(Exception e) {System.out.println("Exception occured is " + e);}
-        try {
-            person.lastNameValidity("Sakhamuri");
-        }catch(Exception e) {
-            System.out.println("Exception occured is " + e);
-        }
-        try {
-            person.emailValidity("lavanyace929@gmail.com" );
-        }catch(Exception e) {
-            System.out.println("Exception occured is " + e);
-        }
-        try {
-            person.mobileValidity("91 9963929045");
-        }catch(Exception e) {
-            System.out.println("Exception occured is " + e);
-        }
-        try {
-            person.passwordValidity("Hieveryone@3");
-        }catch(Exception e) {
-            System.out.println("Exception occured is " + e);
-        }
+        UserEntryDetails compare = (String pattern, String name) -> Pattern.matches(pattern, name);
+        System.out.println("Enter your First Name");
+        String firstName = sc.next();
+        System.out.println("Enter your Last Name");
+        String lastName = sc.next();
+        System.out.println("Enter your email");
+        String email = sc.next();
+        System.out.println("Enter your Mobile Number");
+        String mobile = sc.next();
+        System.out.println("Enter Password");
+        String password = sc.next();
+
+        System.out.println("Entered First Name is " + compare.validityCheck(FIRST_NAME, firstName));
+        System.out.println("Entered Last Name is " + compare.validityCheck(LAST_NAME, lastName));
+        System.out.println("Entered Email is " + compare.validityCheck(EMAIL, email));
+        System.out.println("Entered Mobile Number is " + compare.validityCheck(MOBILE_NUMBER, mobile));
+        System.out.println("Entered Password is " + compare.validityCheck(PASSWORD, password));
     }
 }
 

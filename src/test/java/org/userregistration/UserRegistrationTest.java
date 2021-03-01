@@ -24,7 +24,7 @@ public class UserRegistrationTest {
         try {
             Assertions.assertEquals(false, person.firstNameValidity("lavanya"));
         } catch (Exception e) {
-            System.out.println("Exception occured is" + e);
+            System.out.println("Exception occur is" + e);
         }
     }
     @Test
